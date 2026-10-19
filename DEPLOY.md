@@ -151,7 +151,7 @@ and Claude is unavailable.
 2. Repo → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 3. The included workflow runs on every push to `main` (or manually via
    **Actions → Deploy to GitHub Pages → Run workflow**).
-4. Site URL: `https://<user>.github.io/<repo>/`.
+4. Site URL: `https://<user>.github.io/<repo>/` — or your custom domain.
 
 Workflow: `.github/workflows/deploy-pages.yml`
 
@@ -176,6 +176,9 @@ Open the preview URL under `/<repo>/`.
 
 - **Base path must match the repo name, with leading and trailing slash**
   (`/digifin/`). A mismatch = blank page or 404 assets.
+- **Custom domain (CNAME):** the workflow detects a root `CNAME` file and uses
+  `VITE_BASE_PATH=/` automatically. A copy lives at `public/CNAME` so the custom
+  domain is included in the deployed artifact.
 - **User/org site** (`<user>.github.io`): change `VITE_BASE_PATH` to `/` in the
   workflow.
 - **Sample statement** is fetched from `${BASE_URL}samples/sample-statement.csv`;
